@@ -11,4 +11,9 @@ class NotificationPlugin {
   Future<String?> getPlatformVersion() {
     return NotificationPluginPlatform.instance.getPlatformVersion();
   }
+
+  Future<bool> showNotification(String id, String title, String body) {
+    return NotificationPluginPlatform.instance
+        .showNotification(id, title, body);
+  }
 }

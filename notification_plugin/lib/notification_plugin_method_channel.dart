@@ -11,7 +11,21 @@ class MethodChannelNotificationPlugin extends NotificationPluginPlatform {
 
   @override
   Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
+    final version =
+        await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
+  }
+
+  @override
+  Future<bool> showNotification(String id, String title, String body) async {
+    final result = await methodChannel.invokeMethod(
+      'showNotification',
+      {
+        'id': id,
+        'title': title,
+        'body': body,
+      },
+    );
+    return result ?? false;
   }
 }

@@ -8,13 +8,14 @@ abstract class NotificationPluginPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static NotificationPluginPlatform _instance = MethodChannelNotificationPlugin();
+  static NotificationPluginPlatform _instance =
+      MethodChannelNotificationPlugin();
 
   /// The default instance of [NotificationPluginPlatform] to use.
   ///
   /// Defaults to [MethodChannelNotificationPlugin].
   static NotificationPluginPlatform get instance => _instance;
-  
+
   /// Platform-specific implementations should set this with their own
   /// platform-specific class that extends [NotificationPluginPlatform] when
   /// they register themselves.
@@ -25,5 +26,9 @@ abstract class NotificationPluginPlatform extends PlatformInterface {
 
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
+  Future<bool> showNotification(String id, String title, String body) async {
+    throw UnimplementedError('showNotification() has not been implemented');
   }
 }
